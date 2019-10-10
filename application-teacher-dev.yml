@@ -1,0 +1,44 @@
+server:
+  port: 56710
+  #servlet:
+  #  context-path: /kytms-business
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://192.168.5.240:3306/kytms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/kytms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+
+  application:
+    name: jwxt-business #指定服务名
+
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+
+#分开
+
+mybatis-plus:
+    configuration:
+      map-underscore-to-camel-case: true
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    mapper-locations: classpath:com/kytms/*/mapper/*.xml
+
+ftp:
+    host: 192.168.5.210
+    port: 22
+    username: root
+    password: dmcn@123
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:56798/eureka/,http://localhost:56799/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: system8083 #在注册中心页面显示的微服务名
